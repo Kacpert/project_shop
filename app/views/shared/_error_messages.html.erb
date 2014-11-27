@@ -1,0 +1,24 @@
+<% if @customer.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger">
+    <ul>
+
+
+   	<% if params[:locale] == "pl" or params[:locale].nil? %>
+   			<% @customer.errors.full_messages.each do |msg| %>
+      		 	<li><%=  m = msg.split
+      		 			 m.shift
+      		 	         m.join(" ") %></li>
+        	<% end %>   
+             
+    <% else %>
+            <% @customer.errors.full_messages.each do |msg| %>
+      		 	<li><%= msg %></li>
+        	<% end %>    
+    <% end %>
+
+
+    </ul>
+  </div>
+  </div>
+<% end %>

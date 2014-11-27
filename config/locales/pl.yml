@@ -1,0 +1,19 @@
+pl:
+  kc: "Kontakt"
+  oa: "O nas"
+  gh: "Główna"
+  ks: "Koszule"
+  gs: "Garnitury"
+  aa: "Akcesoria"
+  rr: "Zarejestruj się"
+  form:
+    in: "Imię"
+    hp: "Hasło"
+    pc: "Potwierdzenie hasła"
+  activerecord:
+    errors:
+      models:
+        customer:
+          attributes:
+            email:
+              invalid: "Nieprawidłowo wpisany email."

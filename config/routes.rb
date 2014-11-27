@@ -1,6 +1,19 @@
 Rails.application.routes.draw do
 
 
+  get 'sessions/new'
+
+  get 'register'  => 'customers#new'
+  resources :customers
+
+
+
+  #post   'newsletters'   => 'static_pages#news_create'
+  #get    'newsletters'   => 'static_pages#news_new'
+
+
+  get 'translations/index'
+
   #get 'static_pages/home'
   
   #get 'static_pages/aboutus'
@@ -9,6 +22,12 @@ Rails.application.routes.draw do
   root                'static_pages#home'
   get    'aboutus'   => 'static_pages#aboutus'
   get    'contact' => 'static_pages#contact'
+  get    'shirts' => 'products#shirts'
+  get    'suits' => 'products#suits'
+  get    'akcessories' => 'products#skcessories'
+  get    'login'  => 'sessions#new'
+  post   'login'  => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

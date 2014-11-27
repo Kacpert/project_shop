@@ -20,4 +20,19 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  kc: "Contact"
+  oa: "About us"
+  gh: "Home"
+  ks: "Shirts"
+  gs: "Suits"
+  aa: "Acessories"
+  rr: "Register"
+  form:
+    in: "Name"
+    hp: "Password"
+    pc: "Confirmation"
+  errors:
+    messages:
+      bad_email: "Nieprawidłowo wpisany email."
+
+
