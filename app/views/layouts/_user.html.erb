@@ -9,6 +9,9 @@
           <div class="modal-body">
           <form class="login-form">
             <div class="form-group group">
+
+
+
               <%= form_for(:session, url: login_path) do |f| %>
       <label for="qc-email"><%= t("form.in") %></label>
       <%= f.text_field :name, class: 'form-control' %>
@@ -20,6 +23,8 @@
     </br>
 
       <%= f.submit "Log in", class: "btn btn-black" %>
+
+      
 
     <% end %>
               <a class="help-link" href="#">Forgot email?</a>
