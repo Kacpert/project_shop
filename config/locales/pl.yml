@@ -1,4 +1,7 @@
 pl:
+  flash:
+    bad_email: "Błędny email"
+    bad_password: "Błędne hasło"
   kc: "Kontakt"
   oa: "O nas"
   gh: "Główna"
@@ -7,9 +10,17 @@ pl:
   aa: "Akcesoria"
   rr: "Zarejestruj się"
   form:
-    in: "Imię"
-    hp: "Hasło"
-    pc: "Potwierdzenie hasła"
+    log:
+      email: "Wpisz swój email"
+      password: "Podaj hasło"
+    name: "Imię"
+    lastname: "Nazwisko"
+    phone: "Telefon"
+    city: "Miasto"
+    zipcode: "Kod pocztowy"
+    address: "Adres"
+    password: "Hasło"
+    confirmation: "Potwierdzenie hasła"
   activerecord:
     errors:
       models:

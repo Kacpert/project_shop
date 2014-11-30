@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   get    'shirts' => 'products#shirts'
   get    'suits' => 'products#suits'
   get    'akcessories' => 'products#skcessories'
+
+  
   get    'login'  => 'sessions#new'
   post   'login'  => 'sessions#create'
   delete 'logout' => 'sessions#destroy'

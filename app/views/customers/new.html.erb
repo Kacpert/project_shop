@@ -8,116 +8,79 @@
 
 
    <section class="log-reg container">
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
+
        <h2>Login/ register</h2>
 
           <!--Login-->
           <div class="col-lg-5 col-md-5 col-sm-5">
-            <form method="post" class="login-form">
-              <div class="form-group group">
-                <label for="log-email2">Email</label>
-                <input type="email" class="form-control" name="log-email2" id="log-email2" placeholder="Enter your email" required>
-                <a class="help-link" href="#">Forgot email?</a>
-              </div>
-              <div class="form-group group">
-                <label for="log-password2">Password</label>
-                <input type="text" class="form-control" name="log-password2" id="log-password2" placeholder="Enter your password" required>
-                <a class="help-link" href="#">Forgot password?</a>
-              </div>
-              <div class="checkbox">
-                <label><input type="checkbox" name="remember"> Remember me</label>
-              </div>
-              <input class="btn btn-black" type="submit" value="Login">
-            </form>
+
+
+
+            <%= render template: "sessions/new" %>
+
+
+
+            
           </div>
           <!--Registration-->
 
 
 
 
-          <div class="col-lg-7 col-md-7 col-sm-7">
 
-
-
-
-            <form method="post" class="registr-form">
-              <div class="form-group group">
-
-                <label for="rf-email">Email</label>
-                <input type="email" class="form-control" name="rf-email" id="rf-email" placeholder="Enter email" required>
-              </div>
-
-
-              <div class="form-group group">
-                <label for="rf-password">Password</label>
-                <input type="password" class="form-control" name="rf-password" id="rf-password" placeholder="Enter password" required>
-              </div>
-              <div class="form-group group">
-                <label for="rf-password-repeat">Repeat password</label>
-                <input type="password" class="form-control" name="rf-password-repeat" id="rf-password-repeat" placeholder="Repeat password" required>
-              </div>
-              <div class="checkbox">
-                <label><input type="checkbox" name="remember"> I have read and agree with the terms</label>
-              </div>
-              <input class="btn btn-black" type="submit" value="Register">
-            </form>
-          </div>
-        </div>
-      </section><!--Login / Register Close-->
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@customer) do |f| %>
-      <%= render 'shared/error_messages' %>
+<div class="col-lg-7 col-md-7 col-sm-7">
+        <%= form_for(@customer, :html => {:class => 'registr-form'}) do |f|  %>
 
     <div class="form-group group">
-      <label for="customer_name"><%= t("form.in") %></label>
-      <%= f.text_field :name, class: 'form-control', placeholder: "" %>
+      <label for="customer_name"><%= t('form.name') %></label>
+      <%= f.text_field :name, class: 'form-control', placeholder: t('form.name') %>
     </div>
     <div class="form-group group">
-      <label for="customer_last_name">lastname</label>
-      <%= f.text_field :last_name, class: 'form-control', placeholder: "" %>
+      <label for="customer_last_name"><%= t('form.lastname') %></label>
+      <%= f.text_field :last_name, class: 'form-control', placeholder: t('form.lastname') %>
     </div>
 
     <div class="form-group group">
-      <label for="customer_phone">phone</label>
-      <%= f.text_field :phone, class: 'form-control', placeholder: "" %>
+      <label for="customer_phone"><%= t('form.phone') %></label>
+      <%= f.text_field :phone, class: 'form-control', placeholder: t('form.phone') %>
     </div>
 
     <div class="form-group group">
-      <label for="customer_city">city</label>
-      <%= f.text_field :city, class: 'form-control', placeholder: "" %>
+      <label for="customer_city"><%= t('form.city') %></label>
+      <%= f.text_field :city, class: 'form-control', placeholder: t('form.city') %>
     </div>
 
     <div class="form-group group">
-      <label for="customer_zip_code">zipcode</label>
-      <%= f.text_field :zip_code, class: 'form-control', placeholder: "" %>
+      <label for="customer_zip_code"><%= t('form.zipcode') %></label>
+      <%= f.text_field :zip_code, class: 'form-control', placeholder: t('form.zipcode') %>
     </div>
 
     <div class="form-group group">
-      <label for="qc-email">address</label>
-      <%= f.text_field :address, class: 'form-control', placeholder: "" %>
+      <label for="customer_address"><%= t('form.address') %></label>
+      <%= f.text_field :address, class: 'form-control', placeholder: t('form.address') %>
     </div>
 
     <div class="form-group group">
       <%= f.label :email %>
-      <%= f.text_field :email, class: 'form-control', placeholder: "" %>
+      <%= f.text_field :email, class: 'form-control', placeholder: 'Email' %>
     </div>
 
     <div class="form-group group">
-      <label for="qc-email"><%= t("form.hp") %></label>
-      <%= f.password_field :password, class: 'form-control', placeholder: "" %>
+      <label for="customer_password"><%= t('form.password') %></label>
+      <%= f.password_field :password, class: 'form-control', placeholder: t('form.password') %>
     </div>
 
     <div class="form-group group">
-      <label for="qc-email"><%= t("form.pc") %></label>
-      <%= f.password_field :password_confirmation, class: 'form-control', placeholder: "" %>
+      <label for="customer_password_confirmation"><%= t('form.confirmation') %></label>
+      <%= f.password_field :password_confirmation, class: 'form-control', placeholder: t('form.confirmation') %>
     </div>
-    
-
-      <%= f.submit "Create my account", class: "btn btn-primary" %>
-
+      <%= f.submit "Register", class: "btn btn-black" %>
     <% end %>
-  </br>
-  </div>
 </div>
+        
+      </section><!--Login / Register Close-->
 </div>
 

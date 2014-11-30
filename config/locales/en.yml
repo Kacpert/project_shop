@@ -20,6 +20,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  flash:
+    bad_email: "Email is bad"
+    bad_password: "Password is wrong"
   kc: "Contact"
   oa: "About us"
   gh: "Home"
@@ -28,11 +31,17 @@ en:
   aa: "Acessories"
   rr: "Register"
   form:
-    in: "Name"
-    hp: "Password"
-    pc: "Confirmation"
-  errors:
-    messages:
-      bad_email: "Nieprawidłowo wpisany email."
+    log:
+      email: "Enter your email"
+      password: "Enter your password"
+    name: "Name"
+    lastname: "Lastname"
+    phone: "Phone"
+    city: "City"
+    zipcode: "Zip code"
+    address: "Address"
+    password: "Password"
+    confirmation: "Password confirmation"
+
 
 
