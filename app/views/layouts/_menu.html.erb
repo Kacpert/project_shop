@@ -55,7 +55,15 @@
         <div class="container">  
           <!--Toolbar-->
           <div class="toolbar group">
-            <a class="login-btn btn-outlined-invert" href="#" data-toggle="modal" data-target="#loginModal"><i class="icon-profile"></i> <span><b>L</b>ogin</span></a>
+            <% if logged_in? %>            
+              <a class="login-btn btn-outlined-invert" href='#' ><i class="icon-profile"></i> <span><%= link_to t('account'), current_user %></span></a>  
+
+                 /<%= link_to "Log out", logout_path, method: "delete" %>
+
+            <% else %> 
+              <a class="login-btn btn-outlined-invert" href="#" data-toggle="modal" data-target="#loginModal"><i class="icon-profile"></i> <span><%= t('log_account') %></span></a>
+            <% end %>
+
 
             <a class="btn-outlined-invert" href="wishlist.html"><i class="icon-heart"></i> <span><b>W</b>ishlist</span></a>   
 

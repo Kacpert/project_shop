@@ -24,11 +24,11 @@ Rails.application.routes.draw do
   get    'contact' => 'static_pages#contact'
   get    'shirts' => 'products#shirts'
   get    'suits' => 'products#suits'
-  get    'akcessories' => 'products#skcessories'
+  get    'accessories' => 'products#sccessories'
 
   
   get    'login'  => 'sessions#new'
-  post   'login'  => 'sessions#create'
+  post   'log_in'  => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
 
 

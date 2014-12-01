@@ -3,7 +3,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
-            <h2>Login or <a href="register">Register</a></h2>
+            <h2>Login or <a href=<%= register_path %>>Register</a></h2>
             
           </div>
           <div class="modal-body">
@@ -12,21 +12,8 @@
 
 
 
-              <%= form_for(:session, url: login_path) do |f| %>
-      <label for="qc-email"><%= t("form.in") %></label>
-      <%= f.text_field :name, class: 'form-control' %>
+              <%= render template: "sessions/new" %>
 
-      <label for="qc-email"><%= t("form.hp") %></label>
-      <%= f.password_field :password, class: 'form-control' %>
-
-
-    </br>
-
-      <%= f.submit "Log in", class: "btn btn-black" %>
-
-      
-
-    <% end %>
               <a class="help-link" href="#">Forgot email?</a>
             </div>
             <div class="form-group group">
