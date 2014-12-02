@@ -1,5 +1,5 @@
-20.times do |n|
-  name  = Faker::Company.name
+150.times do |n|
+  name  = Faker::Commerce.product_name
   price_pln = Faker::Commerce.price
   price_eur = Faker::Commerce.price
   price_gbp = Faker::Commerce.price
@@ -11,7 +11,7 @@
   photos = Faker::Avatar.image("my-own-slug", "50x50", "jpg")
   category_id = 1 + Random.rand(3)
 
-  Products.create!(name:  name,
+  Product.create!(name:  name,
                price_pln: price_pln,
                price_eur: price_eur,
                price_gbp: price_gbp,
