@@ -22,7 +22,8 @@ class CustomersController < ApplicationController
       log_in @customer
     	flash[:success] = "Welcome to the Sample App!"
    		redirect_to @customer
-
+      CustomerMailer.account_activation(@customer).deliver
+      flash[:info] = "Please check your email to activate your account."
     else
       render 'new'
     end

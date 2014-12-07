@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141124165945) do
+ActiveRecord::Schema.define(version: 20141205223917) do
 
   create_table "articles", force: true do |t|
     t.string   "name",       limit: 50, null: false
@@ -25,22 +25,26 @@ ActiveRecord::Schema.define(version: 20141124165945) do
   end
 
   create_table "customers", force: true do |t|
-    t.string   "name",       limit: 20,  null: false
-    t.string   "last_name",  limit: 50,  null: false
-    t.string   "email",      limit: 80,  null: false
-    t.string   "password",   limit: 128, null: false
-    t.integer  "phone",                  null: false
-    t.datetime "created_at",             null: false
-    t.boolean  "active",                 null: false
-    t.string   "zip_code",   limit: 6,   null: false
-    t.string   "city",       limit: 50,  null: false
-    t.string   "address",    limit: 50,  null: false
+    t.string   "name",              limit: 20,                  null: false
+    t.string   "last_name",         limit: 50,                  null: false
+    t.string   "email",             limit: 80,                  null: false
+    t.string   "password_digest",   limit: 128,                 null: false
+    t.integer  "phone",                                         null: false
+    t.datetime "created_at",                                    null: false
+    t.boolean  "active",                        default: false, null: false
+    t.string   "zip_code",          limit: 6,                   null: false
+    t.string   "city",              limit: 50,                  null: false
+    t.string   "address",           limit: 50,                  null: false
+    t.string   "activation_digest"
+    t.boolean  "activated",                     default: false
+    t.string   "reset_digest"
+    t.datetime "reset_sent_at"
   end
 
   add_index "customers", ["email"], name: "email", unique: true, using: :btree
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true, using: :btree
 
-  create_table "newsletter", force: true do |t|
+  create_table "newsletters", force: true do |t|
     t.string "email", limit: 40, null: false
   end
 
@@ -87,7 +91,7 @@ ActiveRecord::Schema.define(version: 20141124165945) do
     t.float  "price_gbp", limit: 24, null: false
   end
 
-  create_table "slider", force: true do |t|
+  create_table "sliders", force: true do |t|
     t.string "title_pl",    limit: 15,  null: false
     t.string "subtitle_pl", limit: 100, null: false
     t.string "title_en",    limit: 15,  null: false

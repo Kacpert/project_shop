@@ -1,18 +1,28 @@
 class ProductsController < ApplicationController
 
 
+	def show
+    	@product = Product.find(params[:id])
+ 	end
+
+
+
 	def shirts
-		@shirts = Product.where(category_id: 1)
+		@shirts = category(0)
 	end
 
 	def suits
-		@suits = Product.where(category_id: 2)
-		@pictures = @suits.photos.split("/")
+		@suits = category(1)
 	end
 
 	def accessories
-		@accessories = Product.where(category_id: 3)
-		@pictures = @sacccessories.photos.split("/")
+		@accessories = category(2)
+	end
+
+	
+	private
+	def category(id)
+		Product.where(category_id: id).paginate(:page => params[:page]).order('id DESC')
 	end
 end
 

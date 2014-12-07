@@ -1,6 +1,11 @@
 <% provide(:title, @customer.name) %>
 <div class="page-content">
 </br>
+</br>
+</br>
+      <% flash.each do |message_type, message| %>
+        <div class="alert alert-<%= message_type %>"><%= message %></div>
+      <% end %>
         <%= @customer.name %>
     </br>
 </div>

@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
 
 
+  get 'password_resets/new'
+
+  get 'password_resets/edit'
+
   get 'sessions/new'
 
   get 'register'  => 'customers#new'
   resources :customers
+  resources :account_activations, only: [:edit]
+  resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :products, only: [:show]
 
 
 
@@ -24,6 +31,7 @@ Rails.application.routes.draw do
   get    'contact' => 'static_pages#contact'
   get    'shirts' => 'products#shirts'
   get    'suits' => 'products#suits'
+  get    'show' => 'products#show'
   get    'accessories' => 'products#sccessories'
 
   

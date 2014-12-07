@@ -20,14 +20,14 @@
           </div>
           <div class="row">
 
+
+
+
+
+<%= will_paginate @shirts %>
+
 <% @shirts.each do |shirt| %>
 	<% pictures = shirt.photos.split("/") %>
-
-
-
-
-
-
 
 			<div class="col-lg-3 col-md-4 col-sm-6">
             	<div class="tile">
@@ -35,22 +35,19 @@
                 </div>
               	<div class="price-label"><%= params[:locale] == "pl" ? shirt[:price_pln].to_s + " zł" : shirt[:price_eur].to_s + " €" %></div>
               	<a href="#">
-                  <img src="img/catalog/1.png" alt="1"/>
+                  <img src="/img/catalog/1.png" alt="1"/>
                   <span class="tile-overlay"></span>
                 </a>
                 <div class="footer">
-                	<a href=<%= "http://cliassi.vot.pl/uploads/" + pictures[0] %>><%= shirt.name %></a>
+                	<%= link_to shirt.name, shirt %>
                   <button class="btn btn-primary">Add to Cart</button>
                 </div>
               </div>
             </div>
 
-
-
-
-
-
 <% end %>
+<%= will_paginate @shirts %>
+
 </div>
 
 
