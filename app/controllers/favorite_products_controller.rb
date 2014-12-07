@@ -11,7 +11,7 @@ class FavoriteProductsController < ApplicationController
   
   def destroy
     Favorite.where(favorited_id: @product.id, customer_id: current_user.id).first.destroy
-    redirect_to @product, notice: 'product is no longer in favorites'
+    redirect_to :back, notice: 'product is no longer in favorites'
   end
   
   private

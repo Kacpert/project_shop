@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141205223917) do
+ActiveRecord::Schema.define(version: 20141207200342) do
 
   create_table "articles", force: true do |t|
     t.string   "name",       limit: 50, null: false
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 20141205223917) do
 
   add_index "customers", ["email"], name: "email", unique: true, using: :btree
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true, using: :btree
+
+  create_table "favorites", force: true do |t|
+    t.integer  "customer_id"
+    t.integer  "favorited_id"
+    t.string   "favorited_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "favorites", ["customer_id"], name: "index_favorites_on_customer_id", using: :btree
+  add_index "favorites", ["favorited_id", "favorited_type"], name: "index_favorites_on_favorited_id_and_favorited_type", using: :btree
 
   create_table "newsletters", force: true do |t|
     t.string "email", limit: 40, null: false
