@@ -46,12 +46,28 @@ class CustomersController < ApplicationController
 
 
 
+  def add_favourites
+    customer = current_user
+    if customer.update_attributes(customer_params)
+      flash[:success] = "Added"
+      redirect_to :back
+    else
+    redirect_to root_url 
+    end   
+  end
+
+  def del_favourites
+    
+  end
+
+
+
 
  private
  
     def customer_params
       params.require(:customer).permit(:name, :email, :password, :last_name, :phone, :city, :zip_code, :address,
-                                   :password_confirmation)
+                                   :password_confirmation, :favourites)
     end
 
 

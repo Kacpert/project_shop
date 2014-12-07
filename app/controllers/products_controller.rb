@@ -5,6 +5,13 @@ class ProductsController < ApplicationController
     	@product = Product.find(params[:id])
  	end
 
+ 	def favourite
+		@products = current_user.favorite_products
+	end
+
+	def shopcart
+		@products = current_user.shopcart_products		
+	end
 
 
 	def shirts

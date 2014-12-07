@@ -1,4 +1,7 @@
 class Customer < ActiveRecord::Base
+  has_many :favorites
+  has_many :favorite_products, through: :favorites, source: :favorited, source_type: 'Favorites'
+  has_many :shopcart_products, through: :favorites, source: :favorited, source_type: 'Shopcart'
   attr_accessor :activation_token, :reset_token
   before_save :downcase_email
   before_create :create_activation_digest

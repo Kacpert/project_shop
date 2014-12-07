@@ -11,9 +11,9 @@ Rails.application.routes.draw do
   resources :customers
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :products, only: [:show]
-
-
+  resources :products,            only: [:show]
+  resources :favorite_products,   only: [:create, :destroy]
+  resources :shopcart_products,   only: [:create, :destroy]
 
   #post   'newsletters'   => 'static_pages#news_create'
   #get    'newsletters'   => 'static_pages#news_new'
@@ -33,12 +33,13 @@ Rails.application.routes.draw do
   get    'suits' => 'products#suits'
   get    'show' => 'products#show'
   get    'accessories' => 'products#sccessories'
+  get    'shopcart' => 'products#shopcart'
+  get    'favourite' => 'products#favourite'
 
   
   get    'login'  => 'sessions#new'
   post   'log_in'  => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
