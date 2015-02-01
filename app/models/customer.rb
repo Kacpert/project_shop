@@ -1,6 +1,7 @@
 class Customer < ActiveRecord::Base
-  has_many :favorites
-  has_many :favorite_products, through: :favorites, source: :favorited, source_type: 'Product'
+  has_many :favorites, dependent: :destroy
+
+
   attr_accessor :activation_token, :reset_token
   before_save :downcase_email
   before_create :create_activation_digest
@@ -51,6 +52,20 @@ class Customer < ActiveRecord::Base
 
   def password_reset_expired?
     reset_sent_at < 2.hours.ago
+  end
+
+
+   def add_to_favorite(product_id)
+    current_item = favorites.find_by(product_id: product_id)
+    if !(current_item)      
+      current_item = favorites.build(product_id: product_id)
+    end
+    current_item
+  end
+
+
+  def remove_favorite(item)
+      item.destroy
   end
 
 

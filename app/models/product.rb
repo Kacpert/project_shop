@@ -1,2 +1,5 @@
 class Product < ActiveRecord::Base
+	has_many :line_items
+	has_many :fevorites
+	SIZE = ["S", "M", "L", "XL", "XXL"]
 end

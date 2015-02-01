@@ -1,14 +1,19 @@
 <%= form_for(:session, url: log_in_path, :html => {:class => 'login-form'}) do |f| %>
 
     <div class="form-group group">
-      <%= f.label :email %>
-      <%= f.text_field :email, class: 'form-control', placeholder: t('form.log.email') %>
+      <label for="session_email">Email</label>
+      <input type="email" class="form-control" name="session[email]" id="session_email" placeholder=<%= t('form.log.email') %> required>
     </div>
 
     <div class="form-group group">
-      <label for="customer_password"><%= t('form.password') %></label>
-      <%= f.password_field :password, class: 'form-control', placeholder: t('form.log.password') %>
+      <label for="session_password"><%= t('form.password') %></label>
+      <input type="password" class="form-control" name="session[password]" id="session_password" placeholder=<%= t('form.log.password') %> required>
+      <a class="help-link" href=<%= new_password_reset_path %>>Forgot password?</a>            
     </div>
 
       <%= f.submit "Log in", class: "btn btn-black" %>
 <% end %>
+
+						
+              
+

@@ -1,19 +1,26 @@
 Rails.application.routes.draw do
 
+  resources :favorites
+
+  resources :examples
 
   get 'password_resets/new'
 
   get 'password_resets/edit'
 
-  get 'sessions/new'
-
+  post 'add'  => 'line_items#add'
+  post 'remove'  => 'line_items#remove'
   get 'register'  => 'customers#new'
+  get 'carts/set_currency', as: :set_currency
+  get 'customers/favorites', as: :customer_favorites
   resources :customers
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :products,            only: [:show]
-  resources :favorite_products,   only: [:create, :destroy]
   resources :shopcart_products,   only: [:create, :destroy]
+  resources :carts
+  resources :line_items
+  resources :orders,              only: [:new, :create]
 
   #post   'newsletters'   => 'static_pages#news_create'
   #get    'newsletters'   => 'static_pages#news_new'
@@ -32,11 +39,9 @@ Rails.application.routes.draw do
   get    'shirts' => 'products#shirts'
   get    'suits' => 'products#suits'
   get    'show' => 'products#show'
-  get    'accessories' => 'products#sccessories'
+  get    'accessories' => 'products#accessories'
   get    'shopcart' => 'products#shopcart'
   get    'favourite' => 'products#favourite'
-
-  
   get    'login'  => 'sessions#new'
   post   'log_in'  => 'sessions#create'
   delete 'logout' => 'sessions#destroy'

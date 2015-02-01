@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <%= render 'layouts/info' %>
-</head>
-	<body class="parallax">
+	<head>
+  	<%= render 'layouts/info' %>
+	</head>
+		<body class="parallax">
 
-  		<%= render 'layouts/header' %>
+  		<%= render 'layouts/top' %>
 		      
 	<% flash.each do |message_type, message| %>
         <div class="alert alert-<%= message_type %>"><%= message %></div>

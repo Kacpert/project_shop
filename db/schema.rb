@@ -11,13 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141207200342) do
+ActiveRecord::Schema.define(version: 20150129183831) do
 
   create_table "articles", force: true do |t|
     t.string   "name",       limit: 50, null: false
     t.datetime "created_at",            null: false
     t.text     "content",               null: false
     t.text     "content_pl",            null: false
+  end
+
+  create_table "carts", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "categories", force: true do |t|
@@ -45,15 +50,27 @@ ActiveRecord::Schema.define(version: 20141207200342) do
   add_index "customers", ["email"], name: "index_customers_on_email", unique: true, using: :btree
 
   create_table "favorites", force: true do |t|
+    t.integer  "product_id"
     t.integer  "customer_id"
-    t.integer  "favorited_id"
-    t.string   "favorited_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "favorites", ["customer_id"], name: "index_favorites_on_customer_id", using: :btree
-  add_index "favorites", ["favorited_id", "favorited_type"], name: "index_favorites_on_favorited_id_and_favorited_type", using: :btree
+  add_index "favorites", ["product_id"], name: "index_favorites_on_product_id", using: :btree
+
+  create_table "line_items", force: true do |t|
+    t.integer  "product_id"
+    t.integer  "cart_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "quantity",   default: 1
+    t.string   "size"
+    t.string   "color"
+  end
+
+  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
+  add_index "line_items", ["product_id"], name: "index_line_items_on_product_id", using: :btree
 
   create_table "newsletters", force: true do |t|
     t.string "email", limit: 40, null: false
@@ -79,27 +96,27 @@ ActiveRecord::Schema.define(version: 20141207200342) do
   add_index "orders", ["id"], name: "id", using: :btree
 
   create_table "products", force: true do |t|
-    t.string  "name",           limit: 30, null: false
-    t.float   "price_pln",      limit: 24, null: false
-    t.float   "price_eur",      limit: 24, null: false
-    t.float   "price_gbp",      limit: 24, null: false
-    t.integer "weight",                    null: false
-    t.text    "photos",                    null: false
-    t.text    "options",                   null: false
-    t.text    "description_pl",            null: false
-    t.text    "description_en",            null: false
-    t.text    "color",                     null: false
-    t.integer "category_id",               null: false
+    t.string  "name",           limit: 30,                         null: false
+    t.decimal "price_pln",                 precision: 9, scale: 2, null: false
+    t.decimal "price_eur",                 precision: 9, scale: 2, null: false
+    t.decimal "price_gbp",                 precision: 9, scale: 2, null: false
+    t.integer "weight",                                            null: false
+    t.text    "photos",                                            null: false
+    t.text    "options",                                           null: false
+    t.text    "description_pl",                                    null: false
+    t.text    "description_en",                                    null: false
+    t.text    "color",                                             null: false
+    t.integer "category_id",                                       null: false
   end
 
   add_index "products", ["id"], name: "id", using: :btree
   add_index "products", ["id"], name: "id_2", using: :btree
 
   create_table "shippings", force: true do |t|
-    t.string "name",      limit: 20, null: false
-    t.float  "price_pln", limit: 24, null: false
-    t.float  "price_eur", limit: 24, null: false
-    t.float  "price_gbp", limit: 24, null: false
+    t.string  "name",      limit: 20,                         null: false
+    t.decimal "price_pln",            precision: 9, scale: 2, null: false
+    t.decimal "price_eur",            precision: 9, scale: 2, null: false
+    t.decimal "price_gbp",            precision: 9, scale: 2, null: false
   end
 
   create_table "sliders", force: true do |t|

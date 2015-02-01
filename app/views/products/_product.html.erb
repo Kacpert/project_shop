@@ -1,0 +1,19 @@
+<% pictures = product.photos.split("/") %>
+
+			<div class="col-lg-3 col-md-4 col-sm-6">
+            	<div class="tile">
+              	<div class="badges">
+                </div>
+              	<div class="price-label"><%= params[:locale] == "en" ? product[:price_eur].to_s + " €" : product[:price_pln].to_s + " zł" %></div>
+              	<a href="#">
+                  <img src="/img/catalog/1.png" alt="1"/>
+                  <span class="tile-overlay"></span>
+                </a>
+                <div class="footer">
+                	<%= link_to product.name, product %>
+                   <% if logged_in? %>  
+<%= button_to 'Add to favorite', favorites_path(product_id: product), class: 'btn btn-primary' %>
+<% end %>
+                </div>
+              </div>
+            </div>

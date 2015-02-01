@@ -1,0 +1,35 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :shipping %><br>
+    <%= f.select :shipping, ['Odbiór osobisty', 'Pobraniowo', 'Przelew'], prompt: "method of payment"  %>
+  </div>
+
+    <div class="form-group group">
+      <label for="customer_city"><%= t('form.city') %></label>
+      <%= f.text_field :shipping_city, class: 'form-control', placeholder: t('form.city') %>
+    </div>
+
+    <div class="form-group group">
+      <label for="customer_zip_code"><%= t('form.zipcode') %></label>
+      <%= f.text_field :shipping_zip_code, class: 'form-control', placeholder: t('form.zipcode') %>
+    </div>
+
+    <div class="form-group group">
+      <label for="customer_address"><%= t('form.address') %></label>
+      <%= f.text_field :shipping_address, class: 'form-control', placeholder: t('form.address') %>
+    </div>
+
+      <%= f.submit "Order", class: "btn btn-black", data: { disable_with: "Please wait..." } %>
+    <% end %>

@@ -1,0 +1,45 @@
+<div class="page-content">
+
+
+	<ol class="breadcrumb">
+        <li><a href=<%= root_url %>>Home</a></li>
+        <li>shirts</li>
+      </ol><!--Breadcrumbs Close-->
+
+
+		<section class="catalog-grid">
+      	<div class="container">
+          
+          <div class="row">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @customer.name %>
+</p>
+
+
+<%= render @customer.favorites %>
+
+</div>
+
+
+      
+      <!--Catalog Grid-->
+      <section class="catalog-grid">
+      	<div class="container">
+
+
+          <!--Pagination-->
+
+        </div>
+      </section><!--Catalog Grid Close-->
+    
+      <!--Brands Carousel Widget-->
+      <section class="brand-carousel">
+        <div class="container">
+          <h2>Brands in our shop</h2>
+         
+        </div>
+      </section><!--Brands Carousel Close-->
+      

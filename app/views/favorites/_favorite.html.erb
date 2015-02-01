@@ -1,0 +1,18 @@
+<% pictures = favorite.product.photos.split("/") %>
+
+			<div class="col-lg-3 col-md-4 col-sm-6">
+            	<div class="tile">
+              	<div class="badges">
+                </div>
+              	<div class="price-label"><%= params[:locale] == "en" ? favorite.product[:price_eur].to_s + " €" : favorite.product[:price_pln].to_s + " zł" %></div>
+              	<a href="#">
+                  <img src="/img/catalog/1.png" alt="1"/>
+                  <span class="tile-overlay"></span>
+                </a>
+                <div class="footer">
+                	<%= link_to favorite.product.name, favorite.product %>
+                  
+<%= button_to 'Remove', favorite, method: :delete, class: 'btn btn-primary' %>
+                </div>
+              </div>
+            </div>

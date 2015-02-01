@@ -1,0 +1,127 @@
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i></button>
+            <h2>Login or <a href=<%= register_path %>>Register</a></h2>            
+          </div>
+          <div class="modal-body">
+          <%= render template: "sessions/new" %>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+    <header data-offset-top="100" data-stuck="150"><!--data-offset-top is when header converts to small variant and data-stuck when it becomes visible. Values in px represent position of scroll from top. Make sure there is at least 100px between those two values for smooth animation-->
+    
+      <!--Search Form-->
+      <form class="search-form closed" method="get" role="form" autocomplete="off">
+      	<div class="container">
+          <div class="close-search"><i class="icon-delete"></i></div>
+            <div class="form-group">
+              <label class="sr-only" for="search-hd">Search for product</label>
+              <input type="text" class="form-control" name="search-hd" id="search-hd" placeholder="Search for product">
+              <button type="submit"><i class="icon-magnifier"></i></button>
+          </div>
+        </div>
+      </form>
+    
+    	<!--Mobile Menu Toggle-->
+      <div class="menu-toggle"><i class="fa fa-list"></i></div>
+
+      <div class="container">
+        <a class="logo" href=<%= root_url %>><img src="img/logo-scheme4.png" alt="Limo"/></a>
+      </div>
+      
+      <!--Main Menu-->
+      <nav class="menu">
+        <div class="container">
+          
+          <ul class="main">
+          	<li class="has-submenu"><a href=<%= customer_favorites_path %>><span>U</span>lubione<i class="fa fa-chevron-down"></i></a><!--Class "has-submenu" for proper highlighting and dropdown-->
+            	
+            </li>
+          	<% if logged_in? %>  
+          	<li class="has-submenu"><a href="#"><i class="icon-profile"></i><span><b>k</b></span>onto</a>
+          		<ul class="submenu">
+                <li><%= link_to t('account'), current_user %></li>
+                <li><%= link_to 'Edytuj profil', edit_customer_path(current_user) %></li>
+                <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+              </ul>
+          	</li>
+          	<% else %> 
+            <a class="login-btn btn-outlined-invert" href="#" data-toggle="modal" data-target="#loginModal"><i class="icon-profile"></i> <span><b>L</b>ogin</span></a>
+          	<% end %>
+          </ul>
+
+        </div>
+
+        <div class="catalog-block">
+          <div class="container">
+            <ul class="catalog">
+              <li><%= link_to t('oa'), aboutus_path %></li>            	
+            	<li><%= link_to t('ks'), shirts_path %></li>
+            	<li><%= link_to t('gs'), suits_path %></li>
+            	<li><%= link_to t('aa'), accessories_path %></li>
+            	<li><%= link_to t('kc'), contact_path %></li>              
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+      <div class="toolbar-container">
+        <div class="container">  
+          <!--Toolbar-->
+          <div class="toolbar group">
+          <%= link_to 'ANG ', params.merge({:locale => 'en'}) %> ||
+          <%= link_to 'PL', params.merge({:locale => 'pl'}) %>
+          
+
+            <a class="btn-outlined-invert" href="wishlist.html"><i class="icon-heart"></i> <span><b>W</b>ishlist</span></a>   
+
+            <div class="cart-btn">
+              <a class="btn btn-outlined-invert" href="shopping-cart.html"><i class="icon-shopping-cart-content"></i><span>/</span><b>c a r t</b></a>
+              
+              <!--Cart Dropdown-->
+              <div class="cart-dropdown">
+                <span></span><!--Small rectangle to overlap Cart button-->
+                <div class="body">
+                  <table>
+                    <tr>
+                      <th>Items</th>
+                      <th>Quantity</th>
+                      <th>Price</th>
+                    </tr>
+                    <tr class="item">
+                      <td><div class="delete"></div><a href="#">Good Joo-Joo Surfb</a></td>
+                      <td><input type="text" value="1"></td>
+                      <td class="price">89 005 $</td>
+                    </tr>
+                    <tr class="item">
+                      <td><div class="delete"></div><a href="#">Good Joo-Joo Item</a></td>
+                      <td><input type="text" value="2"></td>
+                      <td class="price">4 300 $</td>
+                    </tr>
+                    <tr class="item">
+                      <td><div class="delete"></div><a href="#">Good Joo-Joo</a></td>
+                      <td><input type="text" value="5"></td>
+                      <td class="price">84 $</td>
+                    </tr>
+                  </table>
+                </div>
+                <div class="footer group">
+                  <div class="buttons">
+                    <a class="btn btn-outlined-invert" href="checkout.html"><i class="icon-download"></i>Checkout</a>
+                    <a class="btn btn-outlined-invert" href="shopping-cart.html"><i class="icon-shopping-cart-content"></i>To cart</a>
+                  </div>
+                  <div class="total">93 389 $</div>
+                </div>
+              </div><!--Cart Dropdown Close-->
+            </div>
+
+            <button class="search-btn btn-outlined-invert"><i class="icon-magnifier"></i></button>
+          </div><!--Toolbar Close-->
+        </div>
+      </div>
+    </header><!--Header Close-->

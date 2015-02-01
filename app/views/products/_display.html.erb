@@ -1,0 +1,22 @@
+</br>
+</br>
+</br>
+
+
+<div class="page-content">
+	<ol class="breadcrumb">
+    <li><a href=<%= root_url %>>Home</a></li>
+    <li>shirts</li>
+  </ol><!--Breadcrumbs Close-->
+	<section class="catalog-grid">
+    <div class="container">
+      <div class="row">
+
+        <%= will_paginate @products %>
+          <%= render @products %>
+        <%= will_paginate @products %>
+    
+      </div>
+    </div>
+  </section>
+</div>

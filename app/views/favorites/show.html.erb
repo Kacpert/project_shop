@@ -1,0 +1,24 @@
+<div class="page-content">
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @favorite.customer.name %>
+</p>
+
+
+
+  <% @favorite.customer.favorites.each do |favorite| %>
+
+
+<p>
+  <strong>Product:</strong>
+  <%= favorite.product.name %>
+</p>
+<% end %>
+
+
+
+<%= link_to 'Edit', edit_favorite_path(@favorite) %> |
+<%= link_to 'Back', favorites_path %>
+</div>

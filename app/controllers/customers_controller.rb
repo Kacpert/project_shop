@@ -16,7 +16,7 @@ class CustomersController < ApplicationController
     @customer = Customer.new
   end
 
-    def create
+  def create
     @customer = Customer.new(customer_params)
     if @customer.save
       log_in @customer
@@ -45,20 +45,10 @@ class CustomersController < ApplicationController
   end
 
 
-
-  def add_favourites
-    customer = current_user
-    if customer.update_attributes(customer_params)
-      flash[:success] = "Added"
-      redirect_to :back
-    else
-    redirect_to root_url 
-    end   
+  def favorites
+    @customer = current_user
   end
 
-  def del_favourites
-    
-  end
 
 
 
