@@ -1,8 +1,29 @@
 <div class="page-content">
-  </br>
-	<% if notice %>
-		<p id="notice"><%= notice %></p>
-	<% end %>
+   <section class="shopping-cart">
+    	<div class="container">
+      	<div class="row">
+        
+        	<!--Items List-->
+        	<div class="col-lg-9 col-md-9">
+          	<h2 class="title">Shopping cart</h2>
+          	<div id="cart">
+          		<%= render @cart %>
+          	</div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+            <%= button_to "Proceed to checkout", new_order_path, method: :get, class: "btn btn-black btn-block" %>
+          </div>
+        </div>
+      </div>
+      </br>
+    </section><!--Shopping Cart Close-->
 
-<%= render @cart %>
+  <section class="brand-carousel">
+    <div class="container">
+      <h2>Cart</h2>
+     
+    </div>
+  </section><!--Brands Carousel Close-->
 </div>

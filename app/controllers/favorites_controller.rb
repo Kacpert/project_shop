@@ -58,7 +58,7 @@ class FavoritesController < ApplicationController
   def destroy
     @customer.remove_favorite(@favorite)
     respond_to do |format|
-      format.html { redirect_to customer_favorites_path, notice: 'Favorite was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Favorite was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

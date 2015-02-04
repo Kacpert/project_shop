@@ -20,19 +20,18 @@ class Cart < ActiveRecord::Base
 	def add_product(product_id, quantity, size, color)
 		current_item = line_items.find_by(product_id: product_id)
 		n = quantity.to_i
-		if current_item 
-			current_item.quantity += n
+		if current_item
+		 if current_item.size == size && current_item.color == color
+				current_item.quantity += n
+			else
+				current_item = line_items.build(product_id: product_id, quantity: n, size: size, color: color)
+			end
 		else
 			current_item = line_items.build(product_id: product_id, quantity: n, size: size, color: color)
 		end
 		current_item
 	end
 
-	def remove_one(product_id)
-		current_item = line_items.find_by(product_id: product_id)
-		current_item.quantity -= 1
-		return current_item
-	end
 
 	def remove_product(item)
 		if item.quantity > 1

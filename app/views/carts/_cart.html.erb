@@ -1,25 +1,18 @@
-
-    <div class="body">
-  
-      <table class="table">
-      <caption><%= link_to 'PLN', set_currency_path(currency_from_link: 'PLN') %> | <%= link_to 'EUR', set_currency_path(currency_from_link: 'EUR') %> | <%= link_to 'GBP', set_currency_path(currency_from_link: 'GBP') %></caption>
-        <tr>
-          <th>Items</th>
-          <th>Size</th>
-          <th>Color</th>
-          <th>Quantity</th>
-          <th>Price</th>
-        </tr>
-      <%= render @cart.line_items %>
-      <tr>
-      <th></th>
+  <table class="table">
+    <caption><%= link_to 'PLN', set_currency_path(currency_from_link: 'PLN') %> | <%= link_to 'EUR', set_currency_path(currency_from_link: 'EUR') %> | <%= link_to 'GBP', set_currency_path(currency_from_link: 'GBP') %></caption>
+    <tr>
+      <th>Items</th>
+      <th>Size</th>
+      <th>Color</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+    <%= render @cart.line_items %>
+    <tr>
+      <th><%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?' } %></th>
       <th></th>
       <th></th>
       <th></th>
       <th><%= total_price %></th>
-      </tr>
-      </table>
-    </div>
-    <%= button_to 'Empty cart', @cart, method: :delete, data: { confirm: 'Are you sure?' } %>     
-    
-  </div>
+    </tr>
+  </table>

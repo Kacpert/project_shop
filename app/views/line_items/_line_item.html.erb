@@ -2,8 +2,7 @@
 	<td><%= line_item.product.name %></td>
 	<td><%= line_item.size %></td>
 	<td><%= line_item.color %></td>
-	<td><%= button_to "-", line_item, method: :delete, class: 'left', remote: true %> <%= line_item.quantity %>
-	<%= button_to "+", add_path(line_item_id: line_item.id), remote: true %></td>
+	<td><%= button_to "-", line_item, method: :delete, class: 'left', remote: true %><span class="left">&#x2002<b><%= line_item.quantity %></b>&#x2002</span><%= button_to "+", line_item, method: :patch, class: 'left', remote: true %></td>
 								
 	<td class="line_item_price">
 	  <%= if !(session[:currency].blank?)
@@ -12,9 +11,10 @@
 				line_item.total_price_pln.to_s + " zł"
 			elsif session[:currency] == "EUR"
 				line_item.total_price_eur.to_s+ " €"
+			elsif session[:currency] == "GBP"
+				line_item.total_price_gbp.to_s+ " £"
 			else
-				redirect_to root_url
-				flash[:notice] = "You prowide wrong currency if you don`t write it by hand pls community with support"
+				line_item.total_price_pln.to_s + " zł"
 			end
 
 		else

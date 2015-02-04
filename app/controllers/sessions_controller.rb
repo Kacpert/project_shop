@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if user = Customer.find_by(email: (params[:session][:email]).downcase)
       if user && user.authenticate(params[:session][:password])
         log_in user
-        redirect_back_or user
+        redirect_back_or root_url
       else
         redirect_to register_path
         flash[:danger] = t('flash.bad_password')

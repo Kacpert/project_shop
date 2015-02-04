@@ -71,9 +71,10 @@ class Customer < ActiveRecord::Base
 
 
   private
+  
   def downcase_email
       self.email = email.downcase
-    end
+  end
 
   def create_activation_digest
     self.activation_token  = Customer.new_token

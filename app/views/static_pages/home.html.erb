@@ -30,9 +30,15 @@
         <% end %>          
       </div>
     </section>
-  <!--Hero Slider Close-->
+    
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
 
-        <!--Categories-->
+
+
+
+  <!--Categories-->
       <section class="cat-tiles">
         <div class="container">
           <h2>Browse categories</h2>
@@ -40,46 +46,75 @@
             <!--Category-->
             <div class="category col-lg-2 col-md-2 col-sm-4 col-xs-6">
               <a href="#">
-                <img src="img/categories/1.png" alt="1"/>
+                <img src="/assets/1.jpg" alt="1"/>
                 <p>Leather belt</p>
               </a>
             </div>
             <!--Category-->
             <div class="category col-lg-2 col-md-2 col-sm-4 col-xs-6">
               <a href="#">
-                <img src="img/categories/1.png" alt="1"/>
+                <img src="/assets/2.jpg" alt="1"/>
                 <p>Wallet</p>
               </a>
             </div>
             <!--Category-->
             <div class="category col-lg-2 col-md-2 col-sm-4 col-xs-6">
               <a href="#">
-                <img src="img/categories/1.png" alt="1"/>
+                <img src="/assets/3.jpg" alt="1"/>
                 <p>Gloves</p>
               </a>
             </div>
             <!--Category-->
             <div class="category col-lg-2 col-md-2 col-sm-4 col-xs-6">
               <a href="#">
-                <img src="img/categories/1.png" alt="1"/>
+                <img src="/assets/4.jpg" alt="1"/>
                 <p>City bag</p>
               </a>
             </div>
             <!--Category-->
             <div class="category col-lg-2 col-md-2 col-sm-4 col-xs-6">
               <a href="#">
-                <img src="img/categories/1.png" alt="1"/>
+                <img src="/assets/5.jpg" alt="1"/>
                 <p>Backpack</p>
               </a>
             </div>
             <!--Category-->
             <div class="category col-lg-2 col-md-2 col-sm-4 col-xs-6">
               <a href="#">
-                <img src="img/categories/1.png" alt="1"/>
+                <img src="/assets/6.jpg" alt="1"/>
                 <p>Belts</p>
               </a>
             </div>
           </div>
         </div>
       </section><!--Categories Close-->
+
+
+    <!-- Relative background -->
+    <section style="background-image: url(/assets/tlorel.jpg);" class="info-block-image feature-tabs" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="container">
+          <div class="row">
+            <div class="tabs-content col-lg-6 col-md-6">
+              <div class="tabs-pane current" id="tab-1">
+                <h2>Messenger</h2>
+                <p class="p-style3">Outline the main advantages a one can get by purchasing a product from your store. Have you got expensive items and at the same time a flexible return policy? Make a customer aware of that! </p>
+              </div>
+              <div class="tabs-pane" id="tab-2">
+                <h2>High quality leather</h2>
+                <p class="p-style3">Second text</p>
+              </div>
+              <div class="tabs-pane" id="tab-3">
+                <h2>Smart delivery transfer</h2>
+                <p class="p-style3">Outline the main advantages a one can get by purchasing a product from your store. Have you got expensive items and at the same time a flexible return policy? Make a customer aware of that! </p>
+              </div>
+            </div>
+            <div class="tabs col-lg-6 col-md-6 group">
+              <span class="tab active" data-tab="#tab-1"><i class="fa fa-archive"></i></span>
+              <span class="tab" data-tab="#tab-2"><i class="fa fa-recycle"></i></span>
+              <span class="tab" data-tab="#tab-3"><i class="fa fa-gift"></i></span>
+            </div>
+          </div>
+        </div>
+      </section><!--Info Block Close-->
 </div>

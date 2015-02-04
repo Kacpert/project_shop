@@ -1,18 +1,23 @@
 class OrdersController < ApplicationController
 	include OrdersHelper
-	before_action :logged_in?
+	before_action :logged_in_user
 
 	def new
 		@customer = current_user
 		@order = Order.new(shipping_city: @customer.city,
-		 shipping_zip_code: @customer.zip_code, shipping_address: @customer.address)
-		
+		 shipping_zip_code: @customer.zip_code, shipping_address: @customer.address)		
 	end
 
 	def create
 		currency = currency_def
-		save_order(order_params, @cart, current_user, currency)
-    redirect_to register_path
+		if save_order(order_params, @cart, current_user, currency)
+			flash[:success] = "Your order has been successfully submitted"
+			@cart.destroy
+    	redirect_to root_url
+    else
+    	flash[:danger] = "Something go wrong pls contact with our support."
+    	redirect_to root_url
+    end
 	end
 
 private
@@ -65,10 +70,19 @@ private
 			order.shipping_price = total_price
 			order.order_currency = currency
 			order.status = 'OCZEKUJE'			
-			order.save
-
-
-
+			if order.save
+				return true
+			else
+				return false
+			end
 		end
+				
+		def logged_in_user
+      unless logged_in?
+        store_location
+        flash[:danger] = "Please log in."
+        redirect_to register_path
+      end
+    end
 
 end

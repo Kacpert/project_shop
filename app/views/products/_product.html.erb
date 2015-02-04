@@ -5,15 +5,26 @@
               	<div class="badges">
                 </div>
               	<div class="price-label"><%= params[:locale] == "en" ? product[:price_eur].to_s + " €" : product[:price_pln].to_s + " zł" %></div>
-              	<a href="#">
+              	<%= link_to product do %>
                   <img src="/img/catalog/1.png" alt="1"/>
                   <span class="tile-overlay"></span>
-                </a>
+                <% end %>
                 <div class="footer">
                 	<%= link_to product.name, product %>
-                   <% if logged_in? %>  
-<%= button_to 'Add to favorite', favorites_path(product_id: product), class: 'btn btn-primary' %>
-<% end %>
+          <% if logged_in? %>
+
+            <% if @customer_favorites.include?(product.id) %>
+              <%= button_to @customer.favorites.product, method: :delete, class: "btn btn-black btn-sm" do %>
+                <i class="fa fa-minus-square-o"></i><i class="icon-heart"></i>
+                <% end %>
+            <% else %>
+              <%= button_to favorites_path(product_id: product), class: "btn btn-black btn-sm" do %>
+                <i class="fa fa-plus-square-o"></i><i class="icon-heart"></i>
+              <% end %>
+            <% end %>
+
+          <% end %>
                 </div>
               </div>
             </div>
+

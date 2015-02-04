@@ -1,5 +1,4 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=latin,latin-ext,vietnamese);
-
 /*
  *Limo HTML5 E-Commerce Template Styles v1.0
  *Copyright 2014 8Guild.com
@@ -9471,7 +9470,7 @@ fieldset[disabled] .btn-outlined {
 }
 .btn-outlined-invert {
   font-size: 1.25em;
-  color: #ff9016;
+  color: #283841;
   font-weight: normal;
   text-align: center;
   background: none;
@@ -9490,7 +9489,7 @@ fieldset[disabled] .btn-outlined {
 .btn-outlined-invert:hover {
   border-color: transparent;
   background: #fff;
-  color: #ff9016;
+  color: black;
   text-decoration: none;
 }
 .btn-outlined-invert.btn-default:hover {
@@ -9809,7 +9808,7 @@ header .logo {
   z-index: 3;
 }
 header .logo img {
-  width: 80px;
+  width: 130px;
 }
 @media only screen and (max-width: 991px) {
   header .logo {

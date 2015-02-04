@@ -8,8 +8,6 @@ Rails.application.routes.draw do
 
   get 'password_resets/edit'
 
-  post 'add'  => 'line_items#add'
-  post 'remove'  => 'line_items#remove'
   get 'register'  => 'customers#new'
   get 'carts/set_currency', as: :set_currency
   get 'customers/favorites', as: :customer_favorites
@@ -22,8 +20,7 @@ Rails.application.routes.draw do
   resources :line_items
   resources :orders,              only: [:new, :create]
 
-  #post   'newsletters'   => 'static_pages#news_create'
-  #get    'newsletters'   => 'static_pages#news_new'
+  post 'newsletters' => 'newsletters#create'
 
 
   get 'translations/index'
